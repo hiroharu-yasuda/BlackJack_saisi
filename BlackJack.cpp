@@ -9,7 +9,7 @@
 
 using namespace std;
 
-enum PERSON
+enum person
 {
 	DEALER,
 	Player1,
@@ -38,7 +38,7 @@ static void showPersonsHand(Person** persons, int num)
 	for (int i = 0; i < num; i++)
 	{
 		char buf[32] = { 0 };
-		cout << setw(15) << persons[i]->createCardString(buf);
+		cout << setw(15) << persons[i]->CardString(buf);
 		cout << " ";
 	}
 	cout << endl;
@@ -63,7 +63,7 @@ static void showPersonsHand(Person** persons, int num)
 static void showResult(Person** p, int num)
 {
 	cout << "============================" << endl;
-	cout << "            result          " << endl;
+	cout << "            結果発表          " << endl;
 	cout << "============================" << endl;
 
 	p[DEALER]->show();
@@ -73,13 +73,13 @@ static void showResult(Person** p, int num)
 	{
 		cout << p[i]->getName();
 		if (p[i]->getScore() > p[DEALER]->getScore()) {
-			cout << " Win!" << endl;
+			cout << " 勝ち!" << endl;
 		}
 		else if (p[i]->getScore() < p[DEALER]->getScore()) {
-			cout << " Lose" << endl;
+			cout << " 負け！" << endl;
 		}
 		else {
-			cout << " Push" << endl;
+			cout << " 引き分け！" << endl;
 		}
 	}
 }
@@ -114,13 +114,13 @@ static void Game()
 	
 	for (int i = 1; i < num; i++)
 	{
-		if (!persons[i]->play(&shoe)) {
+		if (!persons[i]->Play(&shoe)) {
 			cout << "Burst " << persons[i]->getName() << endl;
 		}
 	}
 
 
-	persons[DEALER]->play(&shoe);
+	persons[DEALER]->Play(&shoe);
 
 	showResult(persons, num);
 

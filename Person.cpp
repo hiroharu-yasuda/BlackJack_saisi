@@ -25,7 +25,7 @@ void Person::_copy(const Person& other)
 	copy(std::begin(other._hand), std::end(other._hand), std::begin(_hand));
 
 	_cardNum = other._cardNum;
-	_calcUpdate = other._calcUpdate;
+	_Update = other._Update;
 	_score = other._score;
 
 	_pName = new char[strlen(other._pName) + 1];
@@ -54,7 +54,7 @@ void Person::operator=(const Person& other)
 
 int Person::getScore()
 {
-	if (_calcUpdate == true)
+	if (_Update == true)
 	{
 		int* data = NULL;
 
@@ -114,10 +114,10 @@ void Person::hit(Shoe* shoe) {
 
 	_hand[_cardNum] = card;
 	_cardNum++;
-	_calcUpdate = true;
+	_Update = true;
 }
 
-char* Person::createCardString(char* const pStr) const
+char* Person::CardString(char* const pStr) const
 {
 	if (pStr != NULL)
 	{
@@ -139,7 +139,7 @@ void Person::show() {
 	cout << "hand: ";
 
 	char buf[32];
-	cout << createCardString(buf);
+	cout << CardString(buf);
 
 	cout << endl;
 	cout << "score: " << getScore() << endl; 
@@ -147,7 +147,7 @@ void Person::show() {
 
 }
 
-bool Person::play(Shoe* const shoe)
+bool Person::Play(Shoe* const shoe)
 {
 	playBase(shoe);
 

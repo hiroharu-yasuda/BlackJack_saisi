@@ -11,7 +11,7 @@ class Person
 {
 private:
 	Card _hand[HAND_SIZE];
-	bool _calcUpdate = false;
+	bool _Update = false;
 	int _cardNum = 0;
 	int _score = 0;
 	char* _pName = NULL;
@@ -32,11 +32,11 @@ public:
 
 	char* getName() const { return _pName; };
 
-	char* createCardString(char* const pStr) const;
+	char* CardString(char* const pStr) const;
 
 	void show();
 
-	bool play(Shoe* const shoe);
+	bool Play(Shoe* const shoe);
 protected:
 	virtual void playBase(Shoe* const shoe) = 0;
 
